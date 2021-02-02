@@ -22,7 +22,7 @@ function loadGame(event) {
     $("#pickGame").css("display", "none");
     $("#gameTitle").text(d.title);
     $("#gameAuthor").text("By: " + d.author);
-    $(document).prop("title", d.title + " by " + d.author + " | Q&A");
+    $(document).prop("title", d.title + " by " + d.author + " | A&Q");
     var i = 1;
     var maxClues = 0;
     // find the maximum number of clues
