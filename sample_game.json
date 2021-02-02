@@ -1,0 +1,173 @@
+{
+  "title": "Sample Game",
+  "author": "Brandon Ingli",
+  "description": "A Sample Game for the Question and Answer game engine.",
+  "categories": [
+    {
+      "category": "Tutorial",
+      "clues": [
+        {
+          "points": 200,
+          "answer": "Click anywhere on the clue to reveal the question.",
+          "question": "What is \"You did it\"?"
+        },
+        {
+          "points": 400,
+          "answer": "This is how you add and remove teams.",
+          "question": "What is by clicking Add/Remove in the lower left?"
+        },
+        {
+          "points": 650,
+          "answer": "This is how you change scores and team names.",
+          "question": "What are by clicking on the name or score, or pressing the +/- buttons?"
+        },
+        {
+          "points": 500,
+          "answer": "If you click the X icon instead of the clue, this happens.",
+          "question": "What is the clue remains visible on the board and the last score counter remains the same?"
+        },
+        {
+          "points": 1000,
+          "answer": "True or False: Game Progress and Scores save if you refresh.",
+          "question": "What is False?"
+        }
+      ]
+    },
+    {
+      "category": "One Clue",
+      "clues": [
+        {
+          "points": 400,
+          "answer": "This is the only clue in the category.",
+          "question": "What is cool?"
+        }
+      ]
+    },
+    {
+      "category": "Six Clues",
+      "clues": [
+        {
+          "points": 1,
+          "answer": "Clue number one.",
+          "question": "What is question number one?"
+        },
+        {
+          "points": 2,
+          "answer": "Clue number two.",
+          "question": "What is question number two?"
+        },
+        {
+          "points": 3,
+          "answer": "Clue number three.",
+          "question": "What is question number three?"
+        },
+        {
+          "points": 4,
+          "answer": "Clue number four.",
+          "question": "What is question number four?"
+        },
+        {
+          "points": 5,
+          "answer": "Clue number five.",
+          "question": "What is question number five?"
+        },
+        {
+          "points": 6,
+          "answer": "Clue number six.",
+          "question": "What is question number six?"
+        }
+      ]
+    },
+    {
+      "category": "Five More Clues",
+      "clues": [
+        {
+          "points": 1,
+          "answer": "Clue number one.",
+          "question": "What is question number one?"
+        },
+        {
+          "points": 2,
+          "answer": "Clue number two.",
+          "question": "What is question number two?"
+        },
+        {
+          "points": 3,
+          "answer": "Clue number three.",
+          "question": "What is question number three?"
+        },
+        {
+          "points": 4,
+          "answer": "Clue number four.",
+          "question": "What is question number four?"
+        },
+        {
+          "points": 5,
+          "answer": "Clue number five.",
+          "question": "What is question number five?"
+        }
+      ]
+    },
+    {
+      "category": "This category name is quite long for an Answer and Question",
+      "clues": [
+        {
+          "points": 1,
+          "answer": "Clue number one.",
+          "question": "What is question number one?"
+        },
+        {
+          "points": 2,
+          "answer": "Clue number two.",
+          "question": "What is question number two?"
+        },
+        {
+          "points": 3,
+          "answer": "Clue number three.",
+          "question": "What is question number three?"
+        },
+        {
+          "points": 4,
+          "answer": "Clue number four.",
+          "question": "What is question number four?"
+        },
+        {
+          "points": 5,
+          "answer": "Clue number five.",
+          "question": "What is question number five?"
+        }
+      ]
+    },
+    {
+      "category": "A long name for a category",
+      "clues": [
+        {
+          "points": 1,
+          "answer": "Clue number one.",
+          "question": "What is question number one?"
+        },
+        {
+          "points": 2,
+          "answer": "Clue number two.",
+          "question": "What is question number two?"
+        },
+        {
+          "points": 3,
+          "answer": "Clue number three.",
+          "question": "What is question number three?"
+        },
+        {
+          "points": 4,
+          "answer": "Clue number four.",
+          "question": "What is question number four?"
+        },
+        {
+          "points": 5,
+          "answer": "Clue number five.",
+          "question": "What is question number five?"
+        }
+      ]
+    }
+    
+  ]
+}
