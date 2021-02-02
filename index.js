@@ -18,7 +18,7 @@ function getFileData(event) {
 }
 
 function loadGame(event) {
-    var d = JSON.parse(event.originalTarget.result);
+    var d = JSON.parse(event.target.result);
     $("#pickGame").css("display", "none");
     $("#gameTitle").text(d.title);
     $("#gameAuthor").text("By: " + d.author);
