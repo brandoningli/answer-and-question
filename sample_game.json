@@ -38,6 +38,7 @@
       "clues": [
         {
           "points": 400,
+          "dailyDouble": true,
           "answer": "This is the only clue in the category.",
           "question": "What is cool?"
         }

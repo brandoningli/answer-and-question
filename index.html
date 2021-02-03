@@ -33,9 +33,18 @@
         <div class="bar"></div>
         <div id="activeAnswer"></div>
         <div id="activeQuestion"></div>
-        <div id="activeClose">Close</div>
+        <div class="button" id="activeClose">Close</div>
         <input type="hidden" id="activeRow">
         <input type="hidden" id="activeCol">
+        <input type="hidden" id="activeDD">
+      </div>
+      <div id="dailyDouble">
+        <div id="ddTitle">Daily Double</div>
+        <div class="bar"></div>
+        <div id="teamBankText"><span id="currentTeam">Team Name</span>'s Current Bank:</div>
+        <div id="currentBank">0</div>
+        <div id="wagerText">Make your wager!</div>
+        <div class="button visible" id="ddShowClue">Show Clue</div>
       </div>
     
       <button id="pickGame">Pick Game</button>
@@ -49,7 +58,11 @@
       </div>
       <div class="last">
         <div><strong>Last Question:</strong></div>
-        <div><span id="lastPoints" contenteditable="">0</span></div>
+        <div>Category <span id="lastCategoryNum">-</span></div>
+        <div>
+          <span id="lastPoints" contenteditable="">0</span>
+          <span id="ddIndicator"></span>
+        </div>
       </div>
     </div>
     <div class="scoreBoxContainer">

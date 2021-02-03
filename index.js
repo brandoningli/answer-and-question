@@ -26,19 +26,19 @@ function loadGame(event) {
     var i = 1;
     var maxClues = 0;
     // find the maximum number of clues
-    for (var cat of d.categories){
-      if (cat.clues.length > maxClues){
-        maxClues = cat.clues.length;
-      }
+    for (var cat of d.categories) {
+        if (cat.clues.length > maxClues) {
+            maxClues = cat.clues.length;
+        }
     }
     for (var cat of d.categories) {
         $("thead tr").append("<th></th>");
-        $("thead tr th:nth-child("+i+")").text(cat.category);
+        $("thead tr th:nth-child(" + i + ")").text(cat.category);
         $("tbody").append("<tr></tr>");
         var row = $("tbody tr:nth-child(" + (i) + ")");
         for (var j = 0; j < cat.clues.length; j++) {
             row.append("<td></td>");
-            var cell = $("tbody tr:nth-child(" + (i) + ") td:nth-child(" + (j+1 + ")"));
+            var cell = $("tbody tr:nth-child(" + (i) + ") td:nth-child(" + (j + 1 + ")"));
             cell.text(cat.clues[j].points);
             cell.attr("data-answer", cat.clues[j].answer);
             cell.attr("data-question", cat.clues[j].question);
@@ -46,10 +46,11 @@ function loadGame(event) {
             cell.attr("data-category", cat.category);
             cell.attr("data-row", j + 1);
             cell.attr("data-col", i);
+            cell.attr("data-dd", cat.clues[j].dailyDouble);
         }
 
-        for (var k = cat.clues.length; k < maxClues; k++){
-          row.append("<td class='empty'></td>");
+        for (var k = cat.clues.length; k < maxClues; k++) {
+            row.append("<td class='empty'></td>");
         }
 
         i++;
@@ -57,24 +58,24 @@ function loadGame(event) {
 
     // Invert Table
 
-    $("table tbody").each(function () {
-      var $this = $(this);
-      var newrows = [];
-      $this.find("tr").each(function () {
-          var i = 0;
-          $(this).find("td").each(function () {
-              i++;
-              if (newrows[i] === undefined) {
-                  newrows[i] = $("<tr></tr>");
-              }
-              newrows[i].append($(this));
-          });
-      });
-      $this.find("tr").remove();
-      $.each(newrows, function () {
-          $this.append(this);
-      });
-  });
+    $("table tbody").each(function() {
+        var $this = $(this);
+        var newrows = [];
+        $this.find("tr").each(function() {
+            var i = 0;
+            $(this).find("td").each(function() {
+                i++;
+                if (newrows[i] === undefined) {
+                    newrows[i] = $("<tr></tr>");
+                }
+                newrows[i].append($(this));
+            });
+        });
+        $this.find("tr").remove();
+        $.each(newrows, function() {
+            $this.append(this);
+        });
+    });
 
 
     $("tbody tr td:not(.empty)").click(function() {
@@ -84,13 +85,25 @@ function loadGame(event) {
         $("#activeQuestion").text($(this).attr("data-question")).removeClass("visible");
         $("#activeRow").val($(this).attr("data-row"));
         $("#activeCol").val($(this).attr("data-col"));
+        $("#activeDD").val($(this).attr("data-dd"));
         $("#activeClose").removeClass("visible");
-        $("#activeClue").modal({
-            escapeClose: false,
-            clickClose: false,
-            fadeDuration: 250,
-            fadeDelay: 0
-        });
+        if ($(this).attr("data-dd")) {
+            $("#currentTeam").text($(".hasControl").find(".teamName").text());
+            $("#currentBank").text($(".hasControl").find(".score").text());
+            $("#dailyDouble").modal({
+                escapeClose: false,
+                clickClose: false,
+                fadeDuration: 250,
+                fadeDelay: 0
+            });
+        } else {
+            $("#activeClue").modal({
+                escapeClose: false,
+                clickClose: false,
+                fadeDuration: 250,
+                fadeDelay: 0
+            });
+        }
     });
 
     $("#activeClue").click(function() {
@@ -98,42 +111,62 @@ function loadGame(event) {
         $("#activeClose").addClass("visible");
     });
 
+    $("#ddShowClue").click(function(){
+        $.modal.close();
+        $("#activeClue").modal({
+            escapeClose: false,
+            clickClose: false,
+            fadeDuration: 250,
+            fadeDelay: 0
+        });
+    })
+
 }
 
 $("#activeClose").click(function() {
     $("tbody tr:nth-child(" + $("#activeRow").val() + ") td:nth-child(" + $("#activeCol").val() + ")")
         .addClass("viewed")
         .html("&nbsp;");
-        $("#lastPoints").text($("#activePoints").text());
+    $("#lastPoints").text($("#activePoints").text());
+    $("#lastCategoryNum").text($("#activeCol").val());
+    $("#ddIndicator").empty();
+    if($("#activeDD").val()){
+        $("#ddIndicator").text(" (DD)");
+    }
     $.modal.close();
 });
 
 
-$(".add").click(function(){
+$(".add").click(function() {
     $(".scoreBox.template").clone(true)
         .removeClass("template")
         .appendTo(".scoreBoxContainer");
+    if ($(".scoreBox:not(.template)").length == 1) {
+        $(".scoreBox:not(.template)").addClass("hasControl");
+    }
 });
 
 $(".teamName, .score, #lastPoints")
-        .focus(function(){
-            document.execCommand('selectAll', false, null);
-        });
+    .focus(function() {
+        document.execCommand('selectAll', false, null);
+    });
 
-$(".remove").click(function(){
+$(".remove").click(function() {
     $(".scoreBoxContainer .scoreBox:not(.template):last-child").remove();
 });
 
-$(".addPoints").click(function(){
+$(".addPoints").click(function() {
     $(this).parent().parent().find(".score").text(
-        parseInt($(this).parent().parent().find(".score").text()) + 
+        parseInt($(this).parent().parent().find(".score").text()) +
         parseInt($("#lastPoints").text())
-    )
+    );
+    $(".scoreBox").removeClass("hasControl");
+    $(this).closest(".scoreBox").addClass("hasControl");
 });
 
-$(".removePoints").click(function(){
+$(".removePoints").click(function() {
     $(this).parent().parent().find(".score").text(
-        parseInt($(this).parent().parent().find(".score").text()) - 
+        parseInt($(this).parent().parent().find(".score").text()) -
         parseInt($("#lastPoints").text())
     )
 });

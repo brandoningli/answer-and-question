@@ -70,7 +70,7 @@ tbody tr {
     }
 }
 
-#activeClue {
+#activeClue, #dailyDouble {
     display: none;
     text-align: center;
     cursor: pointer;
@@ -103,29 +103,46 @@ tbody tr {
         }
         display: none;
     }
-    #activeClose {
-        &.visible {
-            animation: fadeIn ease 0.5s;
-            display: inline-block;
-            margin-top: 1ex;
-        }
-        display: none;
-        margin-left: auto;
-        margin-right: auto;
-        font-size: 2em;
-        padding: 0.5rem;
-        border: 3px solid white;
+    
+}
+
+.button {
+    &.visible {
+        animation: fadeIn ease 0.5s;
+        display: inline-block;
+        margin-top: 1ex;
+    }
+    cursor: pointer;
+    display: none;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 2em;
+    padding: 0.5rem;
+    border: 3px solid white;
+    color: white;
+    width: auto;
+    border-radius: 3cm;
+    transition: all 0.25s;
+    &:visited {
         color: white;
-        width: auto;
-        border-radius: 3cm;
-        transition: all 0.25s;
-        &:visited {
-            color: white;
-        }
-        &:hover {
-            color: blue;
-            background-color: white;
-        }
+    }
+    &:hover {
+        color: blue;
+        background-color: white;
+    }
+}
+
+#dailyDouble {
+    cursor: default;
+    #ddTitle {
+        font-size: 6em;
+        color: yellow;
+    }
+    #teamBankText, #currentBank, #wagerText {
+        font-size: 5em;
+    }
+    #wagerText{
+        margin-top: 2ex;
     }
 }
 
@@ -180,6 +197,10 @@ footer {
             padding: 0.25em;
             font-size: 2em;
             margin-left: 2ex;
+
+            &.hasControl{
+                border: 3px solid black;
+            }
 
             div.teamName, div.score{
                 min-width: 2em;
